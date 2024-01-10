@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bck">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/inicio"
+        android:textColor="@color/white"
+        android:textSize="65dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/textView"
+        android:layout_above="@+id/btnBackToMain"
+        android:orientation="vertical">
+
+        <!-- Primera fila de botones -->
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- Botón SELECT -->
+            <Button
+                android:id="@+id/btnSelect"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_select"
+                android:background="@drawable/btn_bg"
+                android:textColor="@color/black"
+                android:onClick="irSelect"/>
+
+            <!-- Botón INSERT -->
+            <Button
+                android:id="@+id/btInsert"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_insert"
+                android:background="@drawable/btn_bg"
+                android:textColor="@color/black"
+                android:onClick="irInsert"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- Botón UPDATE -->
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_update"
+                android:background="@drawable/btn_bg"
+                android:textColor="@color/black"
+                android:onClick="irUpdate"/>
+
+            <!-- Botón DELETE -->
+            <Button
+                android:id="@+id/btDelete"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_delete"
+                android:background="@drawable/btn_bg"
+                android:textColor="@color/black"
+                android:onClick="irDelete"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Botón para volver a la pantalla principal -->
+    <Button
+        android:id="@+id/btnBackToMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="irMain"/>
+</RelativeLayout>

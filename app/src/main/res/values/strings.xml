@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NBAStats</string>
+    <string name="inicio">INICIO</string>
+    <string name="btn_select">SELECT</string>
+    <string name="btn_insert">INSERT</string>
+    <string name="btn_update">UPDATE</string>
+    <string name="btn_delete">DELETE</string>
+    <string name="main">Volver a inicio</string>
+</resources>

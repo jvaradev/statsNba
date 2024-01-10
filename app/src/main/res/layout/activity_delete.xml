@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Insert"
+    android:background="@color/bck">
+
+    <LinearLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE"
+            android:textColor="@color/white"
+            android:textSize="65dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona la tabla en la que quieres hacer delete"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/info"
+        android:layout_above="@+id/btnBackToMain"
+        android:orientation="vertical">
+
+        <!-- Primera fila de botones -->
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- Botón TEAM -->
+            <ImageButton
+                android:id="@+id/btnTeam"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TEAM"
+                android:onClick="irDeleteTeam"
+                android:src="@drawable/team"
+                android:scaleType="fitXY"/>
+
+            <!-- Botón PLAYER -->
+            <ImageButton
+                android:id="@+id/btnPlayer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="PLAYER"
+                android:onClick="irDeletePlayer"
+                android:src="@drawable/player"
+                android:scaleType="fitXY"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- Botón GAME -->
+            <ImageButton
+                android:id="@+id/btnGame"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="GAME"
+                android:onClick="irDeleteGame"
+                android:src="@drawable/game"
+                android:scaleType="fitXY"/>
+
+            <!-- Botón STATS -->
+            <ImageButton
+                android:id="@+id/btnStats"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="STATS"
+                android:onClick="irDeleteStats"
+                android:src="@drawable/stats"
+                android:scaleType="fitXY"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBackToMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="irMain"/>
+</RelativeLayout>
