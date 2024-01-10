@@ -47,9 +47,9 @@ public class DataBase extends SQLiteOpenHelper {
             "game_date TEXT,\n" +
             "home_points INTEGER,\n" +
             "away_points INTEGER,\n" +
-            "home_id INTEGER,\n" +
-            "away_id INTEGER,\n" +
-            "mvp INTEGER);";
+            "home_id TEXT,\n" +
+            "away_id TEXT,\n" +
+            "mvp TEXT);";
 
 
 

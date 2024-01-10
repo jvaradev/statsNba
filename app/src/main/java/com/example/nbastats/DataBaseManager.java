@@ -24,8 +24,8 @@ public class DataBaseManager {
     }
 
     public Cursor getGamesCursor() {
-        // Puedes ajustar la proyección según tus necesidades
-        String[] projection = {"game_date", "home_points", "away_points"};
+        // Definir la proyección con todas las columnas de la tabla "game"
+        String[] projection = {"game_id", "game_date", "home_points", "away_points", "home_id", "away_id", "mvp"};
 
         // Puedes ajustar el orden según tus necesidades
         String sortOrder = "game_date DESC";
@@ -33,6 +33,7 @@ public class DataBaseManager {
         // Realizar la consulta
         return database.query("game", projection, null, null, null, null, sortOrder);
     }
+
 
     // Métodos específicos para cada tabla
 
@@ -48,7 +49,7 @@ public class DataBaseManager {
         return database.insert("player", null, values);
     }
 
-    public long insertGame(String gameDate, int homePoints, int awayPoints, int homeId, int awayId, int mvp) {
+    public long insertGame(String gameDate, int homePoints, int awayPoints, String homeId, String awayId, String mvp) {
         ContentValues values = new ContentValues();
         values.put("game_date", gameDate);
         values.put("home_points", homePoints);

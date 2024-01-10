@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Locale;
 
 public class SelectGame extends AppCompatActivity {
@@ -35,14 +36,18 @@ public class SelectGame extends AppCompatActivity {
             StringBuilder resultStringBuilder = new StringBuilder();
 
             do {
+                int gameId = cursor.getInt(cursor.getColumnIndex("game_id"));
                 String gameDate = cursor.getString(cursor.getColumnIndex("game_date"));
                 int homePoints = cursor.getInt(cursor.getColumnIndex("home_points"));
                 int awayPoints = cursor.getInt(cursor.getColumnIndex("away_points"));
+                String homeId = cursor.getString(cursor.getColumnIndex("home_id"));
+                String awayId = cursor.getString(cursor.getColumnIndex("away_id"));
+                String mvp = cursor.getString(cursor.getColumnIndex("mvp"));
 
                 // Concatenar los resultados
                 resultStringBuilder.append(String.format(Locale.getDefault(),
-                        "Game Date: %s\nHome Points: %d\nAway Points: %d\n\n",
-                        gameDate, homePoints, awayPoints));
+                        "Game ID: %d\nGame Date: %s\nLocal Team: %s\nHome Points: %d\nAway Team: %s\nAway Points: %d\nMVP: %s\n\n",
+                        gameId, gameDate, homeId, homePoints, awayId, awayPoints, mvp));
 
             } while (cursor.moveToNext());
 

@@ -47,8 +47,9 @@ public class InsertGame extends AppCompatActivity {
         // Abrir la base de datos
         databaseManager.open();
 
+        //String gameDate, int homePoints, int awayPoints, int homeId, int awayId, int mvp
         // Insertar juego en la base de datos
-        long result = databaseManager.insertGame(fecha, puntosLocal, puntosVisitante, 1, 2, 3);
+        long result = databaseManager.insertGame(fecha, puntosLocal, puntosVisitante, local, visitante, mvp);
 
         // Cerrar la base de datos
         databaseManager.close();
