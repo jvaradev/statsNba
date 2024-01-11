@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nbastats.DataBaseManager;
 import com.example.nbastats.Inicio;
 import com.example.nbastats.R;
+import com.example.nbastats.deletes.DeleteGame;
 
 public class InsertPlayer extends AppCompatActivity {
 
@@ -58,11 +60,9 @@ public class InsertPlayer extends AppCompatActivity {
         databaseManager.close();
 
         if (result != -1) {
-            // Éxito al insertar
-            // Puedes realizar acciones adicionales o mostrar un mensaje de éxito
+            Toast.makeText(InsertPlayer.this, "Jugador insertado exitosamente", Toast.LENGTH_SHORT).show();
         } else {
-            // Falla al insertar
-            // Puedes manejar la falla de alguna manera (mostrar un mensaje de error, etc.)
+            Toast.makeText(InsertPlayer.this, "Fallo inserta jugador", Toast.LENGTH_SHORT).show();
         }
     }
 

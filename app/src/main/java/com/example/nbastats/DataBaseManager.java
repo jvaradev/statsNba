@@ -150,6 +150,10 @@ public class DataBaseManager {
     public int deleteGameById(int gameId) {
         return database.delete("game", "game_id=?", new String[]{String.valueOf(gameId)});
     }
+    public int deletePlayerById(int playerId) {
+        return database.delete("player", "player_id=?", new String[]{String.valueOf(playerId)});
+    }
+
 
     public int updateGame(int gameId, String gameDate, int homePoints, int awayPoints, String homeId, String awayId, String mvp) {
         ContentValues values = new ContentValues();
@@ -167,4 +171,21 @@ public class DataBaseManager {
         // Realizar la actualización
         return database.update("game", values, whereClause, whereArgs);
     }
+    // Método para actualizar jugador
+    public int updatePlayer(int playerId, String playerName, String playerApel, String playerPosition, String playerCountry, String idTeam) {
+        ContentValues values = new ContentValues();
+        values.put("player_name", playerName);
+        values.put("player_apel", playerApel);
+        values.put("player_position", playerPosition);
+        values.put("player_country", playerCountry);
+        values.put("team_id", idTeam);
+
+        // La cláusula WHERE para identificar el jugador a actualizar
+        String whereClause = "player_id=?";
+        String[] whereArgs = {String.valueOf(playerId)};
+
+        // Realizar la actualización
+        return database.update("player", values, whereClause, whereArgs);
+    }
+
 }
