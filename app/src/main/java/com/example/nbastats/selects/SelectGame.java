@@ -1,10 +1,13 @@
-package com.example.nbastats;
+package com.example.nbastats.selects;
 
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.nbastats.DataBaseManager;
+import com.example.nbastats.R;
 
 import java.util.Locale;
 

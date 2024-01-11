@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.nbastats.inserts.InsertGame;
+
 public class Insert extends AppCompatActivity {
 
     @Override
@@ -30,4 +32,9 @@ public class Insert extends AppCompatActivity {
         Intent i = new Intent(this, InsertTeam.class);
         startActivity(i);
     }*/
+
+    public void irInicio(View view) {
+        Intent i = new Intent(this, Inicio.class);
+        startActivity(i);
+    }
 }

@@ -109,5 +109,5 @@
         android:text="@string/main"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:onClick="irMain"/>
+        android:onClick="irInicio"/>
 </RelativeLayout>

@@ -28,7 +28,7 @@ public class DataBaseManager {
         String[] projection = {"game_id", "game_date", "home_points", "away_points", "home_id", "away_id", "mvp"};
 
         // Puedes ajustar el orden según tus necesidades
-        String sortOrder = "game_date DESC";
+        String sortOrder = "game_id ASC";
 
         // Realizar la consulta
         return database.query("game", projection, null, null, null, null, sortOrder);
@@ -107,5 +107,26 @@ public class DataBaseManager {
 
     public Cursor getTeamsByConference(String conference) {
         return database.rawQuery("SELECT * FROM team WHERE team_conference=?", new String[]{conference});
+    }
+
+    public int deleteGameById(int gameId) {
+        return database.delete("game", "game_id=?", new String[]{String.valueOf(gameId)});
+    }
+
+    public int updateGame(int gameId, String gameDate, int homePoints, int awayPoints, String homeId, String awayId, String mvp) {
+        ContentValues values = new ContentValues();
+        values.put("game_date", gameDate);
+        values.put("home_points", homePoints);
+        values.put("away_points", awayPoints);
+        values.put("home_id", homeId);
+        values.put("away_id", awayId);
+        values.put("mvp", mvp);
+
+        // La cláusula WHERE para identificar el juego a actualizar
+        String whereClause = "game_id=?";
+        String[] whereArgs = {String.valueOf(gameId)};
+
+        // Realizar la actualización
+        return database.update("game", values, whereClause, whereArgs);
     }
 }

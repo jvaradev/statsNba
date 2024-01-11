@@ -17,6 +17,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Id partido"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/nuevosDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuevos datos"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Fecha: "
             android:textSize="25dp"/>
         <TextView
@@ -55,6 +68,19 @@
         android:orientation="vertical"
         android:background="@color/white">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:id="@+id/idGame"
+            android:hint="Ingrese Id Partido"
+            android:background="@drawable/edittext_bottom_border"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="25dp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,8 +133,8 @@
         android:layout_below="@id/linear_layout_id"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Insertar Juego"
-        android:onClick="onInsertButtonClick"/>
+        android:text="Actualizar Partido"
+        android:onClick="onUpdateButtonClick"/>
     <Button
         android:id="@+id/btnBackToMain"
         android:layout_width="wrap_content"
