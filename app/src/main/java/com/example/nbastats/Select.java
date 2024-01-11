@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.nbastats.selects.SelectGame;
+import com.example.nbastats.selects.SelectPlayer;
+import com.example.nbastats.selects.SelectStats;
+import com.example.nbastats.selects.SelectTeam;
 
 public class Select extends AppCompatActivity {
 
@@ -21,6 +24,18 @@ public class Select extends AppCompatActivity {
 
     public void irSelectGame (View view){
         Intent i = new Intent(this, SelectGame.class);
+        startActivity(i);
+    }
+    public void irSelectPlayer (View view){
+        Intent i = new Intent(this, SelectPlayer.class);
+        startActivity(i);
+    }
+    public void irSelectStats (View view){
+        Intent i = new Intent(this, SelectStats.class);
+        startActivity(i);
+    }
+    public void irSelectTeam (View view){
+        Intent i = new Intent(this, SelectTeam.class);
         startActivity(i);
     }
     public void irInicio(View view) {

@@ -34,6 +34,40 @@ public class DataBaseManager {
         return database.query("game", projection, null, null, null, null, sortOrder);
     }
 
+    public Cursor getPlayers() {
+        // Definir la proyección con todas las columnas de la tabla "player"
+        String[] projection = {"player_id", "player_name", "player_apel", "player_position", "player_country", "team_id"};
+
+        // Puedes ajustar el orden según tus necesidades
+        String sortOrder = "player_id ASC";
+
+        // Realizar la consulta
+        return database.query("player", projection, null, null, null, null, sortOrder);
+    }
+
+    public Cursor getTeams() {
+        // Definir la proyección con todas las columnas de la tabla "team"
+        String[] projection = {"team_id", "team_name", "team_city", "team_arena", "team_conference", "home_id", "away_id"};
+
+        // Puedes ajustar el orden según tus necesidades
+        String sortOrder = "team_id ASC";
+
+        // Realizar la consulta
+        return database.query("team", projection, null, null, null, null, sortOrder);
+    }
+
+    public Cursor getStats() {
+        // Definir la proyección con todas las columnas de la tabla "stat"
+        String[] projection = {"stat_id", "player_id", "game_id", "pointlastg", "pointperg",
+                "reboundlasg", "reboundperg", "assitslastg", "assitsperg", "steallastg", "blocklastg", "lostlastg"};
+
+        // Puedes ajustar el orden según tus necesidades
+        String sortOrder = "stat_id ASC";
+
+        // Realizar la consulta
+        return database.query("stat", projection, null, null, null, null, sortOrder);
+    }
+
 
     // Métodos específicos para cada tabla
 
