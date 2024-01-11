@@ -72,7 +72,10 @@ public class DataBaseManager {
     // Métodos específicos para cada tabla
 
     // Métodos para la tabla player
-    public long insertPlayer(String playerName, String playerApel, String playerPosition, String playerCountry, int teamId) {
+// Métodos específicos para cada tabla
+
+    // Métodos para la tabla player
+    public long insertPlayer(String playerName, String playerApel, String playerPosition, String playerCountry, String teamId) {
         ContentValues values = new ContentValues();
         values.put("player_name", playerName);
         values.put("player_apel", playerApel);
@@ -82,6 +85,7 @@ public class DataBaseManager {
 
         return database.insert("player", null, values);
     }
+
 
     public long insertGame(String gameDate, int homePoints, int awayPoints, String homeId, String awayId, String mvp) {
         ContentValues values = new ContentValues();

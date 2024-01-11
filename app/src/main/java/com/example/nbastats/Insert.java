@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.nbastats.inserts.InsertGame;
+import com.example.nbastats.inserts.InsertPlayer;
 
 public class Insert extends AppCompatActivity {
 

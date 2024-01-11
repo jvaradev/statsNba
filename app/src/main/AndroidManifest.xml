@@ -33,7 +33,7 @@
             android:name=".selects.SelectGame"
             android:exported="false" />
         <activity
-            android:name=".InsertPlayer"
+            android:name=".inserts.InsertPlayer"
             android:exported="false" />
         <activity
             android:name=".inserts.InsertGame"

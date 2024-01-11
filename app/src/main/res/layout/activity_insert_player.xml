@@ -53,38 +53,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:id="@+id/fecha"
+            android:id="@+id/playerName"
             android:hint="Ingrese Nombre"
             android:background="@drawable/edittext_bottom_border"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:id="@+id/local"
+            android:id="@+id/playerApel"
             android:hint="Ingrese Apellido"
             android:background="@drawable/edittext_bottom_border"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:id="@+id/puntosLocal"
+            android:id="@+id/playerPosition"
             android:hint="Ingrese Posición"
             android:background="@drawable/edittext_bottom_border"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:id="@+id/visitante"
+            android:id="@+id/playerCountry"
             android:hint="Ingrese Nacionalidad"
             android:background="@drawable/edittext_bottom_border"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:id="@+id/puntosVisitante"
+            android:id="@+id/idTeam"
             android:hint="Ingrese Equipo"
             android:background="@drawable/edittext_bottom_border"/>
 
     </LinearLayout>
+    <Button
+        android:id="@+id/btnInsertPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Insertar Juego"
+        android:onClick="onInsertButtonClick"/>
+    <Button
+        android:id="@+id/btnBackToMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="irInicio"/>
 
 </RelativeLayout>

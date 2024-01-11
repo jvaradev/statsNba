@@ -15,7 +15,7 @@ public class DataBase extends SQLiteOpenHelper {
             "    player_apel TEXT,\n" +
             "    player_position TEXT,\n" +
             "    player_country TEXT,\n" +
-            "    team_id INTEGER\n" +
+            "    team_id TEXT\n" +
             ");";
 
     private static final String TABLE_TEAM_CREATE = "CREATE TABLE IF NOT EXISTS team (\n" +
