@@ -42,17 +42,13 @@ public class SelectTeam extends AppCompatActivity {
                 String teamCity = cursor.getString(cursor.getColumnIndex("team_city"));
                 String teamArena = cursor.getString(cursor.getColumnIndex("team_arena"));
                 String teamConference = cursor.getString(cursor.getColumnIndex("team_conference"));
-                int homeId = cursor.getInt(cursor.getColumnIndex("home_id"));
-                int awayId = cursor.getInt(cursor.getColumnIndex("away_id"));
 
                 // Agregar los datos al StringBuilder
                 stringBuilder.append("Team ID: ").append(teamId).append("\n");
                 stringBuilder.append("Team Name: ").append(teamName).append("\n");
                 stringBuilder.append("Team City: ").append(teamCity).append("\n");
                 stringBuilder.append("Team Arena: ").append(teamArena).append("\n");
-                stringBuilder.append("Team Conference: ").append(teamConference).append("\n");
-                stringBuilder.append("Home ID: ").append(homeId).append("\n");
-                stringBuilder.append("Away ID: ").append(awayId).append("\n\n");
+                stringBuilder.append("Team Conference: ").append(teamConference).append("\n\n");
 
             } while (cursor.moveToNext());
 

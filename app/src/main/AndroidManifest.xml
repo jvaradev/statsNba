@@ -15,6 +15,9 @@
         android:theme="@style/Theme.NBAStats"
         tools:targetApi="31">
         <activity
+            android:name=".inserts.InsertTeam"
+            android:exported="false" />
+        <activity
             android:name=".updates.UpdatePlayer"
             android:exported="false" />
         <activity

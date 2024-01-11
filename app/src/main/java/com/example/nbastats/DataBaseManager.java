@@ -47,7 +47,7 @@ public class DataBaseManager {
 
     public Cursor getTeams() {
         // Definir la proyección con todas las columnas de la tabla "team"
-        String[] projection = {"team_id", "team_name", "team_city", "team_arena", "team_conference", "home_id", "away_id"};
+        String[] projection = {"team_id", "team_name", "team_city", "team_arena", "team_conference"};
 
         // Puedes ajustar el orden según tus necesidades
         String sortOrder = "team_id ASC";
@@ -118,15 +118,12 @@ public class DataBaseManager {
         return database.insert("stat", null, values);
     }
 
-    public long insertTeam(String teamName, String teamCity, String teamArena, String teamConference,
-                           int homeId, int awayId) {
+    public long insertTeam(String teamName, String teamCity, String teamArena, String teamConference) {
         ContentValues values = new ContentValues();
         values.put("team_name", teamName);
         values.put("team_city", teamCity);
         values.put("team_arena", teamArena);
         values.put("team_conference", teamConference);
-        values.put("home_id", homeId);
-        values.put("away_id", awayId);
 
         return database.insert("team", null, values);
     }

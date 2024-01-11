@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.nbastats.inserts.InsertGame;
 import com.example.nbastats.inserts.InsertPlayer;
+import com.example.nbastats.inserts.InsertTeam;
 
 public class Insert extends AppCompatActivity {
 
@@ -28,11 +29,11 @@ public class Insert extends AppCompatActivity {
     /*public void irInsertStats (View view){
         Intent i = new Intent(this, InsertStats.class);
         startActivity(i);
-    }
+    }*/
     public void irInsertTeam (View view){
         Intent i = new Intent(this, InsertTeam.class);
         startActivity(i);
-    }*/
+    }
 
     public void irInicio(View view) {
         Intent i = new Intent(this, Inicio.class);

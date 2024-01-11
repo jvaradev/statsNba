@@ -19,13 +19,11 @@ public class DataBase extends SQLiteOpenHelper {
             ");";
 
     private static final String TABLE_TEAM_CREATE = "CREATE TABLE IF NOT EXISTS team (\n" +
-            "    team_id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "    team_id TEXT PRIMARY KEY AUTOINCREMENT,\n" +
             "    team_name TEXT,\n" +
             "    team_city TEXT,\n" +
             "    team_arena TEXT,\n" +
-            "    team_conference TEXT,\n" +
-            "    home_id INTEGER,\n" +
-            "    away_id INTEGER\n" +
+            "    team_conference TEXT\n" +
             ");";
 
     private static final String TABLE_STATS_CREATE = "CREATE TABLE IF NOT EXISTS stat (\n" +
