@@ -168,6 +168,9 @@ public class DataBaseManager {
     public int deleteTeamByName(String teamName) {
         return database.delete("team", "team_name=?", new String[]{teamName});
     }
+    public int deleteStatById(int statId) {
+        return database.delete("stat", "stat_id=?", new String[]{String.valueOf(statId)});
+    }
 
 
     public int updateGame(int gameId, String gameDate, int homePoints, int awayPoints, String homeId, String awayId, String mvp) {
@@ -207,6 +210,30 @@ public class DataBaseManager {
         String whereClause = "team_id=?";
         String[] whereArgs = {String.valueOf(teamId)};
         return database.update("team", values, whereClause, whereArgs);
+    }
+
+    public int updateStat(int statId, int playerId, int gameId, int pointLastGame, double pointPerGame,
+                          int reboundLastGame, double reboundPerGame, int assistsLastGame,
+                          double assistsPerGame, int stealsLastGame, int blocksLastGame, int lostLastGame) {
+        ContentValues values = new ContentValues();
+        values.put("player_id", playerId);
+        values.put("game_id", gameId);
+        values.put("pointlastg", pointLastGame);
+        values.put("pointperg", pointPerGame);
+        values.put("reboundlasg", reboundLastGame);
+        values.put("reboundperg", reboundPerGame);
+        values.put("assitslastg", assistsLastGame);
+        values.put("assitsperg", assistsPerGame);
+        values.put("steallastg", stealsLastGame);
+        values.put("blocklastg", blocksLastGame);
+        values.put("lostlastg", lostLastGame);
+
+        // La cláusula WHERE para identificar la estadística a actualizar
+        String whereClause = "stat_id=?";
+        String[] whereArgs = {String.valueOf(statId)};
+
+        // Realizar la actualización
+        return database.update("stat", values, whereClause, whereArgs);
     }
 
 }

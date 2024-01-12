@@ -10,6 +10,7 @@ import com.example.nbastats.deletes.DeleteGame;
 import com.example.nbastats.selects.SelectPlayer;
 import com.example.nbastats.updates.UpdateGame;
 import com.example.nbastats.updates.UpdatePlayer;
+import com.example.nbastats.updates.UpdateStats;
 import com.example.nbastats.updates.UpdateTeam;
 
 public class Update extends AppCompatActivity {
@@ -30,6 +31,10 @@ public class Update extends AppCompatActivity {
 
     public void irUpdateTeam (View view){
         Intent i = new Intent(this, UpdateTeam.class);
+        startActivity(i);
+    }
+    public void irUpdateStats (View view){
+        Intent i = new Intent(this, UpdateStats.class);
         startActivity(i);
     }
 
