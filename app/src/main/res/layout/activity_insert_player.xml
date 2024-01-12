@@ -93,7 +93,7 @@
         android:layout_below="@id/info"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Insertar Juego"
+        android:text="Insertar Jugador"
         android:onClick="onInsertButtonClick"/>
     <Button
         android:id="@+id/btnBackToMain"

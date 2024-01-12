@@ -23,38 +23,33 @@ public class DataBaseManager {
         dbHelper.close();
     }
 
-    public Cursor getGamesCursor() {
-        // Definir la proyección con todas las columnas de la tabla "game"
+    public Cursor getGamesByField(String field, String value) {
         String[] projection = {"game_id", "game_date", "home_points", "away_points", "home_id", "away_id", "mvp"};
-
-        // Puedes ajustar el orden según tus necesidades
+        String selection = field + "=?";
+        String[] selectionArgs = {value};
         String sortOrder = "game_id ASC";
 
-        // Realizar la consulta
-        return database.query("game", projection, null, null, null, null, sortOrder);
+        return database.query("game", projection, selection, selectionArgs, null, null, sortOrder);
     }
 
-    public Cursor getPlayers() {
-        // Definir la proyección con todas las columnas de la tabla "player"
+    public Cursor getPlayersByField(String field, String value) {
         String[] projection = {"player_id", "player_name", "player_apel", "player_position", "player_country", "team_id"};
-
-        // Puedes ajustar el orden según tus necesidades
+        String selection = field + "=?";
+        String[] selectionArgs = {value};
         String sortOrder = "player_id ASC";
 
-        // Realizar la consulta
-        return database.query("player", projection, null, null, null, null, sortOrder);
+        return database.query("player", projection, selection, selectionArgs, null, null, sortOrder);
     }
 
-    public Cursor getTeams() {
-        // Definir la proyección con todas las columnas de la tabla "team"
+    public Cursor getTeamsByField(String field, String value) {
         String[] projection = {"team_id", "team_name", "team_city", "team_arena", "team_conference"};
-
-        // Puedes ajustar el orden según tus necesidades
+        String selection = field + "=?";
+        String[] selectionArgs = {value};
         String sortOrder = "team_id ASC";
 
-        // Realizar la consulta
-        return database.query("team", projection, null, null, null, null, sortOrder);
+        return database.query("team", projection, selection, selectionArgs, null, null, sortOrder);
     }
+
 
     public Cursor getStats() {
         // Definir la proyección con todas las columnas de la tabla "stat"
@@ -149,6 +144,9 @@ public class DataBaseManager {
     }
     public int deletePlayerById(int playerId) {
         return database.delete("player", "player_id=?", new String[]{String.valueOf(playerId)});
+    }
+    public int deleteTeamByName(String teamName) {
+        return database.delete("team", "team_name=?", new String[]{teamName});
     }
 
 

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.nbastats.deletes.DeleteGame;
 import com.example.nbastats.deletes.DeletePlayer;
+import com.example.nbastats.deletes.DeleteTeam;
 import com.example.nbastats.selects.SelectGame;
 import com.example.nbastats.selects.SelectPlayer;
 
@@ -27,7 +28,10 @@ public class Delete extends AppCompatActivity {
         Intent i = new Intent(this, DeletePlayer.class);
         startActivity(i);
     }
-
+    public void irDeleteTeam (View view){
+        Intent i = new Intent(this, DeleteTeam.class);
+        startActivity(i);
+    }
     public void irInicio(View view) {
         Intent i = new Intent(this, Inicio.class);
         startActivity(i);
