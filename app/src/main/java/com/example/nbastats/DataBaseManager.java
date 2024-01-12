@@ -50,18 +50,16 @@ public class DataBaseManager {
         return database.query("team", projection, selection, selectionArgs, null, null, sortOrder);
     }
 
-
-    public Cursor getStats() {
-        // Definir la proyección con todas las columnas de la tabla "stat"
+    public Cursor getStatsByField(String field, String value) {
         String[] projection = {"stat_id", "player_id", "game_id", "pointlastg", "pointperg",
                 "reboundlasg", "reboundperg", "assitslastg", "assitsperg", "steallastg", "blocklastg", "lostlastg"};
-
-        // Puedes ajustar el orden según tus necesidades
+        String selection = field + "=?";
+        String[] selectionArgs = {value};
         String sortOrder = "stat_id ASC";
 
-        // Realizar la consulta
-        return database.query("stat", projection, null, null, null, null, sortOrder);
+        return database.query("stat", projection, selection, selectionArgs, null, null, sortOrder);
     }
+
 
 
     // Métodos específicos para cada tabla
