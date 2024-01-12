@@ -92,6 +92,37 @@ public class DataBaseManager {
         return database.insert("game", null, values);
     }
 
+
+    public long insertTeam(String teamName, String teamCity, String teamArena, String teamConference) {
+        ContentValues values = new ContentValues();
+        values.put("team_name", teamName);
+        values.put("team_city", teamCity);
+        values.put("team_arena", teamArena);
+        values.put("team_conference", teamConference);
+
+        return database.insert("team", null, values);
+    }
+
+    public int getPlayerIdByName(String playerName) {
+        Cursor cursor = database.rawQuery("SELECT player_id FROM player WHERE player_name=?", new String[]{playerName});
+        int playerId = -1;
+        if (cursor.moveToFirst()) {
+            playerId = cursor.getInt(cursor.getColumnIndex("player_id"));
+        }
+        cursor.close();
+        return playerId;
+    }
+
+    public Cursor getStatsByPlayerAndGame(int playerId, int gameId) {
+        String[] projection = {"stat_id", "player_id", "game_id", "pointlastg", "pointperg",
+                "reboundlasg", "reboundperg", "assitslastg", "assitsperg", "steallastg", "blocklastg", "lostlastg"};
+        String selection = "player_id=? AND game_id=?";
+        String[] selectionArgs = {String.valueOf(playerId), String.valueOf(gameId)};
+        String sortOrder = "stat_id ASC";
+
+        return database.query("stat", projection, selection, selectionArgs, null, null, sortOrder);
+    }
+
     public long insertStat(int playerId, int gameId, int pointLastGame, double pointPerGame,
                            int reboundLastGame, double reboundPerGame, int assistsLastGame,
                            double assistsPerGame, int stealsLastGame, int blocksLastGame, int lostLastGame) {
@@ -111,15 +142,6 @@ public class DataBaseManager {
         return database.insert("stat", null, values);
     }
 
-    public long insertTeam(String teamName, String teamCity, String teamArena, String teamConference) {
-        ContentValues values = new ContentValues();
-        values.put("team_name", teamName);
-        values.put("team_city", teamCity);
-        values.put("team_arena", teamArena);
-        values.put("team_conference", teamConference);
-
-        return database.insert("team", null, values);
-    }
 
     public Cursor getPlayersByTeam(int teamId) {
         return database.rawQuery("SELECT * FROM player WHERE team_id=?", new String[]{String.valueOf(teamId)});
@@ -179,6 +201,12 @@ public class DataBaseManager {
 
         // Realizar la actualización
         return database.update("player", values, whereClause, whereArgs);
+    }
+
+    public int updateTeam(int teamId, ContentValues values) {
+        String whereClause = "team_id=?";
+        String[] whereArgs = {String.valueOf(teamId)};
+        return database.update("team", values, whereClause, whereArgs);
     }
 
 }

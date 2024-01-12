@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.nbastats.inserts.InsertGame;
-import com.example.nbastats.inserts.InsertPlayer;
-import com.example.nbastats.inserts.InsertTeam;
+import com.example.nbastats.inserts.*;
 
 public class Insert extends AppCompatActivity {
 
@@ -26,10 +24,10 @@ public class Insert extends AppCompatActivity {
         Intent i = new Intent(this, InsertPlayer.class);
         startActivity(i);
     }
-    /*public void irInsertStats (View view){
+    public void irInsertStats (View view){
         Intent i = new Intent(this, InsertStats.class);
         startActivity(i);
-    }*/
+    }
     public void irInsertTeam (View view){
         Intent i = new Intent(this, InsertTeam.class);
         startActivity(i);
