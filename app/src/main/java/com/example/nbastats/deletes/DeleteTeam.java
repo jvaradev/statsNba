@@ -44,19 +44,16 @@ public class DeleteTeam extends AppCompatActivity {
         // Retrieve the team ID from the EditText
         String teamId = teamIdEditText.getText().toString().trim();
 
-        // Check if the team ID is not empty
         if (!teamId.isEmpty()) {
-            // Delete the team from the database
             int rowsAffected = dbManager.deleteTeamByName(teamId);
 
-            // Check if the deletion was successful
             if (rowsAffected > 0) {
-                Toast.makeText(this, "Equipo eliminado correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.teamDeleteOk, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "No se ha podido eliminar el equipo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.teamDeleteNot, Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "No se ha podido eliminar el equipo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertTeamValidate, Toast.LENGTH_SHORT).show();
         }
     }
 

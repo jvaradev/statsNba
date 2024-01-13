@@ -53,25 +53,17 @@ public class DeletePlayer extends AppCompatActivity {
         if (!playerIdStr.isEmpty()) {
             int playerId = Integer.parseInt(playerIdStr);
 
-            // Abrir la base de datos
             databaseManager.open();
-
-            // Eliminar jugador
             int result = databaseManager.deletePlayerById(playerId);
-
-            // Cerrar la base de datos
             databaseManager.close();
 
             if (result > 0) {
-                // Éxito al eliminar
-                Toast.makeText(this, "Jugador eliminado con éxito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.playerDeleteOk, Toast.LENGTH_SHORT).show();
             } else {
-                // Fallo al eliminar
-                Toast.makeText(this, "Error al eliminar el jugador", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.playerDeleteFail, Toast.LENGTH_SHORT).show();
             }
         } else {
-            // El campo del ID del jugador está vacío
-            Toast.makeText(this, "Ingrese el ID del jugador a eliminar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertPlayerValidate, Toast.LENGTH_SHORT).show();
         }
     }
 

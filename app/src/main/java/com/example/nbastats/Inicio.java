@@ -6,6 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.nbastats.deletes.Delete;
+import com.example.nbastats.inserts.Insert;
+import com.example.nbastats.selects.Select;
+import com.example.nbastats.updates.Update;
+
 public class Inicio extends AppCompatActivity {
 
     @Override

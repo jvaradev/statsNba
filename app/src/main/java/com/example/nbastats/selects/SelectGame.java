@@ -30,7 +30,6 @@ public class SelectGame extends AppCompatActivity {
         boton = findViewById(R.id.boton);
         dataBaseManager = new DataBaseManager(this);
 
-        // Configurar el Spinner con los campos de la tabla Game
         configureSpinner();
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -42,33 +41,26 @@ public class SelectGame extends AppCompatActivity {
     }
 
     private void configureSpinner() {
-        // Obtener la lista de campos de la tabla Game
         List<String> camposList = getGameFields();
 
-        // Crear un adaptador para el Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, camposList);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Configurar el adaptador en el Spinner
         campoSpinner.setAdapter(spinnerAdapter);
 
-        // Manejar eventos de selección en el Spinner
         campoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Al seleccionar un campo, realizar la consulta
                 hacerSelect();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // No es necesario manejar este evento en este caso
             }
         });
     }
 
     private List<String> getGameFields() {
-        // Puedes personalizar esta lista según los campos que tengas en tu tabla Game
         List<String> camposList = new ArrayList<>();
         camposList.add("game_id");
         camposList.add("game_date");
@@ -102,16 +94,16 @@ public class SelectGame extends AppCompatActivity {
                 String awayId = cursor.getString(cursor.getColumnIndex("away_id"));
                 String mvp = cursor.getString(cursor.getColumnIndex("mvp"));
 
-                resultText.append("Game ID: ").append(gameId).append("\n");
-                resultText.append("Game Date: ").append(gameDate).append("\n");
-                resultText.append("Home Points: ").append(homePoints).append("\n");
-                resultText.append("Away Points: ").append(awayPoints).append("\n");
-                resultText.append("Home ID: ").append(homeId).append("\n");
-                resultText.append("Away ID: ").append(awayId).append("\n");
-                resultText.append("MVP: ").append(mvp).append("\n\n");
+                resultText.append(R.string.gameId).append(gameId).append("\n");
+                resultText.append(R.string.gameDate).append(gameDate).append("\n");
+                resultText.append(R.string.homePoints).append(homePoints).append("\n");
+                resultText.append(R.string.awayPoints).append(awayPoints).append("\n");
+                resultText.append(R.string.homeId).append(homeId).append("\n");
+                resultText.append(R.string.awayId).append(awayId).append("\n");
+                resultText.append(R.string.mvp).append(mvp).append("\n\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append("No se encontraron resultados.");
+            resultText.append(R.string.dataNotFound);
         }
 
         textViewGameResults.setText(resultText.toString());

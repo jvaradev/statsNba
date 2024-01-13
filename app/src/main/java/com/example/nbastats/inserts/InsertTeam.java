@@ -53,10 +53,10 @@ public class InsertTeam extends AppCompatActivity {
         long result = dataBaseManager.insertTeam(teamName, teamCity, teamArena, teamConference);
 
         if (result != -1) {
-            Toast.makeText(this, "Equipo insertado correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertTeamOk, Toast.LENGTH_SHORT).show();
             clearFields();
         } else {
-            Toast.makeText(this, "Error al insertar el equipo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertTeamNot, Toast.LENGTH_SHORT).show();
         }
     }
 

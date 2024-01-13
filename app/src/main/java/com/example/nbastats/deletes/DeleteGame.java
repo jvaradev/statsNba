@@ -27,8 +27,8 @@ public class DeleteGame extends AppCompatActivity {
         setContentView(R.layout.activity_delete_game);
 
         databaseManager = new DataBaseManager(this);
-        gameIdEditText = findViewById(R.id.idGame); // Asumo que el ID de partido se ingresa en un EditText con id 'fecha'
-        deleteButton = findViewById(R.id.btnDelete); // Asegúrate de que el botón tenga el ID correcto en tu diseño XML
+        gameIdEditText = findViewById(R.id.idGame);
+        deleteButton = findViewById(R.id.btnDelete);
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,32 +46,27 @@ public class DeleteGame extends AppCompatActivity {
     }
 
     private void deleteGame() {
-        // Obtener el ID del juego a eliminar
         String gameIdString = gameIdEditText.getText().toString();
 
         if (!gameIdString.isEmpty()) {
             try {
                 databaseManager.open();
-
-                // Convertir el ID del juego a entero
                 int gameId = Integer.parseInt(gameIdString);
-
-                // Eliminar el juego
                 int rowsAffected = databaseManager.deleteGameById(gameId);
 
                 if (rowsAffected > 0) {
-                    Toast.makeText(DeleteGame.this, "Juego eliminado exitosamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DeleteGame.this, R.string.gameDeleteOk, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(DeleteGame.this, "No se encontró el juego con el ID especificado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DeleteGame.this, R.string.gameDeleteNot, Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(DeleteGame.this, "Error al eliminar el juego", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DeleteGame.this, R.string.gameDeleteFail, Toast.LENGTH_SHORT).show();
             } finally {
                 databaseManager.close();
             }
         } else {
-            Toast.makeText(DeleteGame.this, "Ingrese un ID de juego válido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DeleteGame.this, R.string.insertGameValidate, Toast.LENGTH_SHORT).show();
         }
     }
 

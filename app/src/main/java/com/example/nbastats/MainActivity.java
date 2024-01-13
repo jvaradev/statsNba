@@ -17,10 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         try {
-            // Inicializar el ayudante de la base de datos
             dataBase = new DataBase(this);
 
-            // Obtener una instancia de la base de datos (esto también creará la base de datos si no existe)
             SQLiteDatabase db = dataBase.getWritableDatabase();
 
             Log.d("DATABASE", "Base de datos abierta correctamente.");

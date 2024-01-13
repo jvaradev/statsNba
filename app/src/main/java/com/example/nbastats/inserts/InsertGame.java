@@ -43,7 +43,6 @@ public class InsertGame extends AppCompatActivity {
     }
 
     public void onInsertButtonClick(View view) {
-        // Obtener datos del formulario
         String fecha = fechaEditText.getText().toString();
         String local = localEditText.getText().toString();
         int puntosLocal = Integer.parseInt(puntosLocalEditText.getText().toString());
@@ -51,20 +50,16 @@ public class InsertGame extends AppCompatActivity {
         int puntosVisitante = Integer.parseInt(puntosVisitanteEditText.getText().toString());
         String mvp = mvpEditText.getText().toString();
 
-        // Abrir la base de datos
         databaseManager.open();
 
-        //String gameDate, int homePoints, int awayPoints, int homeId, int awayId, int mvp
-        // Insertar juego en la base de datos
         long result = databaseManager.insertGame(fecha, puntosLocal, puntosVisitante, local, visitante, mvp);
 
-        // Cerrar la base de datos
         databaseManager.close();
 
         if (result != -1) {
-            Toast.makeText(InsertGame.this, "Partido insertado exitosamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(InsertGame.this, R.string.insertGameOk, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(InsertGame.this, "Error al insertar partido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(InsertGame.this, R.string.insertGameNot, Toast.LENGTH_SHORT).show();
         }
     }
     public void irInicio(View view) {

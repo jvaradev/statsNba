@@ -59,32 +59,25 @@ public class UpdatePlayer extends AppCompatActivity {
         if (!playerIdStr.isEmpty()) {
             int playerId = Integer.parseInt(playerIdStr);
 
-            // Obtener nuevos datos del formulario
             String playerName = playerNameEditText.getText().toString();
             String playerApel = playerApelEditText.getText().toString();
             String playerPosition = playerPositionEditText.getText().toString();
             String playerCountry = playerCountryEditText.getText().toString();
-            String idTeam = idTeamEditText.getText().toString(); // Debes proporcionar el ID del equipo, puede ser fijo o dinámico según tu lógica
+            String idTeam = idTeamEditText.getText().toString();
 
-            // Abrir la base de datos
             databaseManager.open();
 
-            // Actualizar jugador
             int result = databaseManager.updatePlayer(playerId, playerName, playerApel, playerPosition, playerCountry, idTeam);
 
-            // Cerrar la base de datos
             databaseManager.close();
 
             if (result > 0) {
-                // Éxito al actualizar
-                Toast.makeText(this, "Jugador actualizado con éxito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.updatePlayerOk, Toast.LENGTH_SHORT).show();
             } else {
-                // Fallo al actualizar
-                Toast.makeText(this, "Error al actualizar el jugador", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.updatePlayerFail, Toast.LENGTH_SHORT).show();
             }
         } else {
-            // El campo del ID del jugador está vacío
-            Toast.makeText(this, "Ingrese el ID del jugador a actualizar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertPlayerValidate, Toast.LENGTH_SHORT).show();
         }
     }
 

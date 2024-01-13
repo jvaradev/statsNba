@@ -1,4 +1,4 @@
-package com.example.nbastats;
+package com.example.nbastats.updates;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.nbastats.Inicio;
+import com.example.nbastats.R;
 import com.example.nbastats.deletes.DeleteGame;
 import com.example.nbastats.selects.SelectPlayer;
 import com.example.nbastats.updates.UpdateGame;

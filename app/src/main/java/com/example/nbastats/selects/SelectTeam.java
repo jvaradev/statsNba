@@ -33,7 +33,6 @@ public class SelectTeam extends AppCompatActivity {
         boton = findViewById(R.id.boton);
         dataBaseManager = new DataBaseManager(this);
 
-        // Configurar el Spinner con los campos de la tabla Team
         configureSpinner();
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -45,33 +44,26 @@ public class SelectTeam extends AppCompatActivity {
     }
 
     private void configureSpinner() {
-        // Obtener la lista de campos de la tabla Team
         List<String> camposList = getTeamFields();
 
-        // Crear un adaptador para el Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, camposList);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Configurar el adaptador en el Spinner
         campoSpinner.setAdapter(spinnerAdapter);
 
-        // Manejar eventos de selección en el Spinner
         campoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Al seleccionar un campo, realizar la consulta
                 hacerSelect();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // No es necesario manejar este evento en este caso
             }
         });
     }
 
     private List<String> getTeamFields() {
-        // Puedes personalizar esta lista según los campos que tengas en tu tabla Team
         List<String> camposList = new ArrayList<>();
         camposList.add("team_id");
         camposList.add("team_name");
@@ -87,12 +79,10 @@ public class SelectTeam extends AppCompatActivity {
 
         dataBaseManager.open();
 
-        // Realizar la consulta a la tabla Team
         Cursor cursor = dataBaseManager.getTeamsByField(campoSeleccionado, clave);
 
         StringBuilder resultText = new StringBuilder();
 
-        // Iterar sobre el cursor y obtener los resultados
         if (cursor.moveToFirst()) {
             do {
                 int teamId = cursor.getInt(cursor.getColumnIndex("team_id"));
@@ -101,14 +91,14 @@ public class SelectTeam extends AppCompatActivity {
                 String teamArena = cursor.getString(cursor.getColumnIndex("team_arena"));
                 String teamConference = cursor.getString(cursor.getColumnIndex("team_conference"));
 
-                resultText.append("Team ID: ").append(teamId).append("\n");
-                resultText.append("Nombre del equipo: ").append(teamName).append("\n");
-                resultText.append("Ciudad: ").append(teamCity).append("\n");
-                resultText.append("Arena: ").append(teamArena).append("\n");
-                resultText.append("Conferencia: ").append(teamConference).append("\n");
+                resultText.append(R.string.teamId).append(teamId).append("\n");
+                resultText.append(R.string.teamName).append(teamName).append("\n");
+                resultText.append(R.string.city).append(teamCity).append("\n");
+                resultText.append(R.string.arena).append(teamArena).append("\n");
+                resultText.append(R.string.conference).append(teamConference).append("\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append("No se encontraron resultados.");
+            resultText.append(R.string.dataNotFound);
         }
 
         textViewTeamResults.setText(resultText.toString());

@@ -43,26 +43,22 @@ public class InsertPlayer extends AppCompatActivity {
     }
 
     public void onInsertPlayerButtonClick(View view) {
-        // Obtener datos del formulario
         String playerName = playerNameEditText.getText().toString();
         String playerApel = playerApelEditText.getText().toString();
         String playerPosition = playerPositionEditText.getText().toString();
         String playerCountry = playerCountryEditText.getText().toString();
         String teamId = playerTeamEditText.getText().toString();
 
-        // Abrir la base de datos
         databaseManager.open();
 
-        // Insertar jugador en la base de datos
         long result = databaseManager.insertPlayer(playerName, playerApel, playerPosition, playerCountry, teamId);
 
-        // Cerrar la base de datos
         databaseManager.close();
 
         if (result != -1) {
-            Toast.makeText(InsertPlayer.this, "Jugador insertado exitosamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(InsertPlayer.this, R.string.insertPlayerOk, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(InsertPlayer.this, "Fallo inserta jugador", Toast.LENGTH_SHORT).show();
+            Toast.makeText(InsertPlayer.this, R.string.insertPlayerNot, Toast.LENGTH_SHORT).show();
         }
     }
 

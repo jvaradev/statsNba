@@ -63,16 +63,16 @@
             android:name=".inserts.InsertGame"
             android:exported="false" />
         <activity
-            android:name=".Delete"
+            android:name=".deletes.Delete"
             android:exported="false" />
         <activity
-            android:name=".Update"
+            android:name=".updates.Update"
             android:exported="false" />
         <activity
-            android:name=".Insert"
+            android:name=".inserts.Insert"
             android:exported="false" />
         <activity
-            android:name=".Select"
+            android:name=".selects.Select"
             android:exported="false" />
         <activity
             android:name=".Inicio"

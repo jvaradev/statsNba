@@ -57,11 +57,11 @@ public class InsertStats extends AppCompatActivity {
     }
 
     private void irInicio() {
-        // Tu lógica para ir a la pantalla principal
+        Intent i = new Intent(this, Inicio.class);
+        startActivity(i);
     }
 
     private void insertStats() {
-        // Obtener datos de los EditText
         String playerName = playerNameEditText.getText().toString();
         String idGame = idGameEditText.getText().toString();
         String plg = plgEditText.getText().toString();
@@ -74,27 +74,23 @@ public class InsertStats extends AppCompatActivity {
         String blg = blgEditText.getText().toString();
         String llg = llgEditText.getText().toString();
 
-        // Validar que los datos no estén vacíos
         if (TextUtils.isEmpty(playerName) || TextUtils.isEmpty(idGame) || TextUtils.isEmpty(plg) ||
                 TextUtils.isEmpty(ppg) || TextUtils.isEmpty(rlg) || TextUtils.isEmpty(rpg) || TextUtils.isEmpty(alg) ||
                 TextUtils.isEmpty(apg) || TextUtils.isEmpty(slg) || TextUtils.isEmpty(blg) || TextUtils.isEmpty(llg)) {
-            Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.valueEmpty, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Obtener el ID del jugador y del juego
         int playerId = db.getPlayerIdByName(playerName);
         int gameId = Integer.parseInt(idGame);
 
-        // Verificar si ya existen estadísticas para el jugador en el juego
         Cursor existingStats = db.getStatsByPlayerAndGame(playerId, gameId);
         if (existingStats != null && existingStats.getCount() > 0) {
-            Toast.makeText(this, "Las estadísticas para este jugador en este juego ya existen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.existStat, Toast.LENGTH_SHORT).show();
             existingStats.close();
             return;
         }
 
-        // Obtener los valores de los EditText restantes
         int plgValue = Integer.parseInt(plg);
         double ppgValue = Double.parseDouble(ppg);
         int rlgValue = Integer.parseInt(rlg);
@@ -105,15 +101,13 @@ public class InsertStats extends AppCompatActivity {
         int blgValue = Integer.parseInt(blg);
         int llgValue = Integer.parseInt(llg);
 
-        // Insertar las estadísticas
         long result = db.insertStat(playerId, gameId, plgValue, ppgValue, rlgValue, rpgValue, algValue, apgValue, slgValue, blgValue, llgValue);
 
-        // Verificar si la inserción fue exitosa
         if (result != -1) {
-            Toast.makeText(this, "Estadísticas insertadas correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertStatOk, Toast.LENGTH_SHORT).show();
             // Resto de la lógica, si es necesario
         } else {
-            Toast.makeText(this, "Error al insertar estadísticas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertStatNot, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -122,8 +116,5 @@ public class InsertStats extends AppCompatActivity {
         super.onDestroy();
         db.close();
     }
-    public void irInicio(View view) {
-        Intent i = new Intent(this, Inicio.class);
-        startActivity(i);
-    }
+
 }

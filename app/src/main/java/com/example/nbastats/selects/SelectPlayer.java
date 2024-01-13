@@ -31,9 +31,7 @@ public class SelectPlayer extends AppCompatActivity {
         boton = findViewById(R.id.boton);
         dataBaseManager = new DataBaseManager(this);
 
-        // Configurar el Spinner con los campos de la tabla Player
         configureSpinner();
-
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,33 +41,25 @@ public class SelectPlayer extends AppCompatActivity {
     }
 
     private void configureSpinner() {
-        // Obtener la lista de campos de la tabla Player
         List<String> camposList = getPlayerFields();
 
-        // Crear un adaptador para el Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, camposList);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Configurar el adaptador en el Spinner
         campoSpinner.setAdapter(spinnerAdapter);
-
-        // Manejar eventos de selección en el Spinner
         campoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Al seleccionar un campo, realizar la consulta
                 hacerSelect();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // No es necesario manejar este evento en este caso
             }
         });
     }
 
     private List<String> getPlayerFields() {
-        // Puedes personalizar esta lista según los campos que tengas en tu tabla Player
         List<String> camposList = new ArrayList<>();
         camposList.add("player_id");
         camposList.add("player_name");
@@ -86,12 +76,10 @@ public class SelectPlayer extends AppCompatActivity {
 
         dataBaseManager.open();
 
-        // Realizar la consulta a la tabla Player
         Cursor cursor = dataBaseManager.getPlayersByField(campoSeleccionado, clave);
 
         StringBuilder resultText = new StringBuilder();
 
-        // Iterar sobre el cursor y obtener los resultados
         if (cursor.moveToFirst()) {
             do {
                 int playerId = cursor.getInt(cursor.getColumnIndex("player_id"));
@@ -101,15 +89,15 @@ public class SelectPlayer extends AppCompatActivity {
                 String country = cursor.getString(cursor.getColumnIndex("player_country"));
                 String team = cursor.getString(cursor.getColumnIndex("team_id"));
 
-                resultText.append("Player ID: ").append(playerId).append("\n");
-                resultText.append("Nombre: ").append(playerName).append("\n");
-                resultText.append("Apellido: ").append(playerApel).append("\n");
-                resultText.append("Posición: ").append(position).append("\n");
-                resultText.append("País: ").append(country).append("\n");
-                resultText.append("Equipo: ").append(team).append("\n\n");
+                resultText.append(R.string.playerId).append(playerId).append("\n");
+                resultText.append(R.string.playerName).append(playerName).append("\n");
+                resultText.append(R.string.playerSurname).append(playerApel).append("\n");
+                resultText.append(R.string.playerPosition).append(position).append("\n");
+                resultText.append(R.string.playerCountry).append(country).append("\n");
+                resultText.append(R.string.playerTeam).append(team).append("\n\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append("No se encontraron resultados.");
+            resultText.append(R.string.dataNotFound);
         }
 
         textViewPlayerResults.setText(resultText.toString());

@@ -1,4 +1,4 @@
-package com.example.nbastats;
+package com.example.nbastats.selects;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.nbastats.DataBase;
+import com.example.nbastats.Inicio;
+import com.example.nbastats.R;
 import com.example.nbastats.selects.SelectGame;
 import com.example.nbastats.selects.SelectPlayer;
 import com.example.nbastats.selects.SelectStats;
@@ -19,7 +22,6 @@ public class Select extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
-        //Cursor c = db.getReadableDatabase().rawQuery();
     }
 
     public void irSelectGame (View view){

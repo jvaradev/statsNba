@@ -42,7 +42,7 @@ public class DeleteStat extends AppCompatActivity {
         String idStatString = idStatEditText.getText().toString();
 
         if (idStatString.isEmpty()) {
-            Toast.makeText(this, "Ingrese un ID de estadística válido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.insertStatValidate, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -51,9 +51,9 @@ public class DeleteStat extends AppCompatActivity {
         int rowsAffected = dataBaseManager.deleteStatById(idStat);
 
         if (rowsAffected > 0) {
-            Toast.makeText(this, "Estadística eliminada exitosamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.statDeleteOk, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Error al eliminar la estadística", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.statDeleteNot, Toast.LENGTH_SHORT).show();
         }
     }
 

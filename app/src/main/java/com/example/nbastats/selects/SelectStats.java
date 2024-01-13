@@ -31,7 +31,6 @@ public class SelectStats extends AppCompatActivity {
         boton = findViewById(R.id.boton);
         dataBaseManager = new DataBaseManager(this);
 
-        // Configurar el Spinner con los campos de la tabla Stat
         configureSpinner();
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -43,17 +42,13 @@ public class SelectStats extends AppCompatActivity {
     }
 
     private void configureSpinner() {
-        // Obtener la lista de campos de la tabla Stat
         List<String> camposList = getStatsFields();
 
-        // Crear un adaptador para el Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, camposList);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Configurar el adaptador en el Spinner
         campoSpinner.setAdapter(spinnerAdapter);
 
-        // Manejar eventos de selección en el Spinner
         campoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -63,13 +58,11 @@ public class SelectStats extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // No es necesario manejar este evento en este caso
             }
         });
     }
 
     private List<String> getStatsFields() {
-        // Puedes personalizar esta lista según los campos que tengas en tu tabla Stat
         List<String> camposList = new ArrayList<>();
         camposList.add("stat_id");
         camposList.add("player_id");
@@ -92,12 +85,10 @@ public class SelectStats extends AppCompatActivity {
 
         dataBaseManager.open();
 
-        // Realizar la consulta a la tabla Stat
         Cursor cursor = dataBaseManager.getStatsByField(campoSeleccionado, clave);
 
         StringBuilder resultText = new StringBuilder();
 
-        // Iterar sobre el cursor y obtener los resultados
         if (cursor.moveToFirst()) {
             do {
                 int statId = cursor.getInt(cursor.getColumnIndex("stat_id"));
@@ -113,21 +104,21 @@ public class SelectStats extends AppCompatActivity {
                 int blocksLastGame = cursor.getInt(cursor.getColumnIndex("blocklastg"));
                 int lostLastGame = cursor.getInt(cursor.getColumnIndex("lostlastg"));
 
-                resultText.append("Stat ID: ").append(statId).append("\n");
-                resultText.append("Player ID: ").append(playerId).append("\n");
-                resultText.append("Game ID: ").append(gameId).append("\n");
-                resultText.append("Point Last Game: ").append(pointLastGame).append("\n");
-                resultText.append("Point Per Game: ").append(pointPerGame).append("\n");
-                resultText.append("Rebound Last Game: ").append(reboundLastGame).append("\n");
-                resultText.append("Rebound Per Game: ").append(reboundPerGame).append("\n");
-                resultText.append("Assists Last Game: ").append(assistsLastGame).append("\n");
-                resultText.append("Assists Per Game: ").append(assistsPerGame).append("\n");
-                resultText.append("Steals Last Game: ").append(stealsLastGame).append("\n");
-                resultText.append("Blocks Last Game: ").append(blocksLastGame).append("\n");
-                resultText.append("Lost Last Game: ").append(lostLastGame).append("\n\n");
+                resultText.append(R.string.statId).append(statId).append("\n");
+                resultText.append(R.string.playerId).append(playerId).append("\n");
+                resultText.append(R.string.gameId).append(gameId).append("\n");
+                resultText.append(R.string.plg).append(pointLastGame).append("\n");
+                resultText.append(R.string.ppg).append(pointPerGame).append("\n");
+                resultText.append(R.string.rlg).append(reboundLastGame).append("\n");
+                resultText.append(R.string.rpg).append(reboundPerGame).append("\n");
+                resultText.append(R.string.alg).append(assistsLastGame).append("\n");
+                resultText.append(R.string.apg).append(assistsPerGame).append("\n");
+                resultText.append(R.string.slg).append(stealsLastGame).append("\n");
+                resultText.append(R.string.blg).append(blocksLastGame).append("\n");
+                resultText.append(R.string.llg).append(lostLastGame).append("\n\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append("No se encontraron resultados.");
+            resultText.append(R.string.dataNotFound);
         }
 
         textViewStatsResults.setText(resultText.toString());
