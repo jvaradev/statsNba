@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nbastats.DataBaseManager;
@@ -60,11 +62,9 @@ public class InsertGame extends AppCompatActivity {
         databaseManager.close();
 
         if (result != -1) {
-            // Éxito al insertar
-            // Puedes realizar acciones adicionales o mostrar un mensaje de éxito
+            Toast.makeText(InsertGame.this, "Partido insertado exitosamente", Toast.LENGTH_SHORT).show();
         } else {
-            // Falla al insertar
-            // Puedes manejar la falla de alguna manera (mostrar un mensaje de error, etc.)
+            Toast.makeText(InsertGame.this, "Error al insertar partido", Toast.LENGTH_SHORT).show();
         }
     }
     public void irInicio(View view) {

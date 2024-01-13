@@ -18,7 +18,7 @@ public class DeleteGame extends AppCompatActivity {
 
     private DataBaseManager databaseManager;
     private EditText gameIdEditText;
-    private Button deleteButton;
+    private Button deleteButton, btnBackToMain;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,13 +27,20 @@ public class DeleteGame extends AppCompatActivity {
         setContentView(R.layout.activity_delete_game);
 
         databaseManager = new DataBaseManager(this);
-        gameIdEditText = findViewById(R.id.fecha); // Asumo que el ID de partido se ingresa en un EditText con id 'fecha'
+        gameIdEditText = findViewById(R.id.idGame); // Asumo que el ID de partido se ingresa en un EditText con id 'fecha'
         deleteButton = findViewById(R.id.btnDelete); // Asegúrate de que el botón tenga el ID correcto en tu diseño XML
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteGame();
+            }
+        });
+        btnBackToMain = findViewById(R.id.btnBackToMain);
+        btnBackToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                irInicio(view);
             }
         });
     }
