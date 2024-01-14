@@ -1,6 +1,7 @@
 package com.example.nbastats.updates;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -88,5 +89,9 @@ public class UpdateTeam extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         dbManager.close();
+    }
+    public void irInicio(View view) {
+        Intent i = new Intent(this, Inicio.class);
+        startActivity(i);
     }
 }
