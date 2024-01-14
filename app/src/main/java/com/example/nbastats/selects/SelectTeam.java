@@ -98,7 +98,7 @@ public class SelectTeam extends AppCompatActivity {
                 resultText.append(R.string.conference).append(teamConference).append("\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append(R.string.dataNotFound);
+            resultText.append("Resultados no encontrados");
         }
 
         textViewTeamResults.setText(resultText.toString());

@@ -52,7 +52,6 @@ public class SelectStats extends AppCompatActivity {
         campoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Al seleccionar un campo, realizar la consulta
                 hacerSelect();
             }
 
@@ -118,7 +117,7 @@ public class SelectStats extends AppCompatActivity {
                 resultText.append(R.string.llg).append(lostLastGame).append("\n\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append(R.string.dataNotFound);
+            resultText.append("Resultados no encontrados");
         }
 
         textViewStatsResults.setText(resultText.toString());

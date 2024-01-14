@@ -78,12 +78,10 @@ public class SelectGame extends AppCompatActivity {
 
         dataBaseManager.open();
 
-        // Realizar la consulta a la tabla Game
         Cursor cursor = dataBaseManager.getGamesByField(campoSeleccionado, clave);
 
         StringBuilder resultText = new StringBuilder();
 
-        // Iterar sobre el cursor y obtener los resultados
         if (cursor.moveToFirst()) {
             do {
                 int gameId = cursor.getInt(cursor.getColumnIndex("game_id"));
@@ -94,16 +92,16 @@ public class SelectGame extends AppCompatActivity {
                 String awayId = cursor.getString(cursor.getColumnIndex("away_id"));
                 String mvp = cursor.getString(cursor.getColumnIndex("mvp"));
 
-                resultText.append(R.string.gameId).append(gameId).append("\n");
-                resultText.append(R.string.gameDate).append(gameDate).append("\n");
-                resultText.append(R.string.homePoints).append(homePoints).append("\n");
-                resultText.append(R.string.awayPoints).append(awayPoints).append("\n");
-                resultText.append(R.string.homeId).append(homeId).append("\n");
-                resultText.append(R.string.awayId).append(awayId).append("\n");
-                resultText.append(R.string.mvp).append(mvp).append("\n\n");
+                resultText.append("Id partido: ").append(gameId).append("\n");
+                resultText.append("Fecha partido: ").append(gameDate).append("\n");
+                resultText.append("Puntos local: ").append(homePoints).append("\n");
+                resultText.append("Puntos visitante: ").append(awayPoints).append("\n");
+                resultText.append("Equipo local: ").append(homeId).append("\n");
+                resultText.append("Equipo visitante: ").append(awayId).append("\n");
+                resultText.append("MVP: ").append(mvp).append("\n\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append(R.string.dataNotFound);
+            resultText.append("Resultados no encontrados");
         }
 
         textViewGameResults.setText(resultText.toString());

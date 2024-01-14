@@ -97,7 +97,7 @@ public class SelectPlayer extends AppCompatActivity {
                 resultText.append(R.string.playerTeam).append(team).append("\n\n");
             } while (cursor.moveToNext());
         } else {
-            resultText.append(R.string.dataNotFound);
+            resultText.append("Resultados no encontrados");
         }
 
         textViewPlayerResults.setText(resultText.toString());

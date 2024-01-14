@@ -36,7 +36,7 @@
     <string name="homeId">"Equipo Local: "</string>
     <string name="awayId">"Equipo Visitante: "</string>
     <string name="mvp">"MVP: "</string>
-    <string name="dataNotFound">No se encontraron resultados.</string>
+    <string name="resultNotFound">No se encontraron resultados.</string>
     <string name="playerId">"Player ID: "</string>
     <string name="playerName">"Nombre: "</string>
     <string name="playerSurname">"Apellido: "</string>
