@@ -1,5 +1,6 @@
 package com.example.nbastats.selects;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -78,6 +79,7 @@ public class SelectStats extends AppCompatActivity {
         return camposList;
     }
 
+    @SuppressLint("Range")
     private void hacerSelect() {
         String campoSeleccionado = campoSpinner.getSelectedItem().toString();
         String clave = claveEditText.getText().toString();
@@ -103,18 +105,18 @@ public class SelectStats extends AppCompatActivity {
                 int blocksLastGame = cursor.getInt(cursor.getColumnIndex("blocklastg"));
                 int lostLastGame = cursor.getInt(cursor.getColumnIndex("lostlastg"));
 
-                resultText.append(R.string.statId).append(statId).append("\n");
-                resultText.append(R.string.playerId).append(playerId).append("\n");
-                resultText.append(R.string.gameId).append(gameId).append("\n");
-                resultText.append(R.string.plg).append(pointLastGame).append("\n");
-                resultText.append(R.string.ppg).append(pointPerGame).append("\n");
-                resultText.append(R.string.rlg).append(reboundLastGame).append("\n");
-                resultText.append(R.string.rpg).append(reboundPerGame).append("\n");
-                resultText.append(R.string.alg).append(assistsLastGame).append("\n");
-                resultText.append(R.string.apg).append(assistsPerGame).append("\n");
-                resultText.append(R.string.slg).append(stealsLastGame).append("\n");
-                resultText.append(R.string.blg).append(blocksLastGame).append("\n");
-                resultText.append(R.string.llg).append(lostLastGame).append("\n\n");
+                resultText.append("Id stat: ").append(statId).append("\n");
+                resultText.append("Id jugador: ").append(playerId).append("\n");
+                resultText.append("Id partido: ").append(gameId).append("\n");
+                resultText.append("Puntos Último Partido: ").append(pointLastGame).append("\n");
+                resultText.append("Puntos Por Partido: ").append(pointPerGame).append("\n");
+                resultText.append("Rebotes Último Partido: ").append(reboundLastGame).append("\n");
+                resultText.append("Rebotes Por Partido: ").append(reboundPerGame).append("\n");
+                resultText.append("Asistencias Último Partido: ").append(assistsLastGame).append("\n");
+                resultText.append("Asistencias Por Partido: ").append(assistsPerGame).append("\n");
+                resultText.append("Robos Último Partido: ").append(stealsLastGame).append("\n");
+                resultText.append("Tapones Último Partido: ").append(blocksLastGame).append("\n");
+                resultText.append("Pérdidas Último Partido: ").append(lostLastGame).append("\n\n");
             } while (cursor.moveToNext());
         } else {
             resultText.append("Resultados no encontrados");

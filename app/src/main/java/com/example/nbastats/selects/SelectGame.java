@@ -1,5 +1,6 @@
 package com.example.nbastats.selects;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -72,6 +73,7 @@ public class SelectGame extends AppCompatActivity {
         return camposList;
     }
 
+    @SuppressLint("Range")
     private void hacerSelect() {
         String campoSeleccionado = campoSpinner.getSelectedItem().toString();
         String clave = claveEditText.getText().toString();

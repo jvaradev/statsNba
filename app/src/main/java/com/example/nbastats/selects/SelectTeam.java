@@ -73,6 +73,7 @@ public class SelectTeam extends AppCompatActivity {
         return camposList;
     }
 
+    @SuppressLint("Range")
     private void hacerSelect() {
         String campoSeleccionado = campoSpinner.getSelectedItem().toString();
         String clave = claveEditText.getText().toString();
@@ -91,11 +92,11 @@ public class SelectTeam extends AppCompatActivity {
                 String teamArena = cursor.getString(cursor.getColumnIndex("team_arena"));
                 String teamConference = cursor.getString(cursor.getColumnIndex("team_conference"));
 
-                resultText.append(R.string.teamId).append(teamId).append("\n");
-                resultText.append(R.string.teamName).append(teamName).append("\n");
-                resultText.append(R.string.city).append(teamCity).append("\n");
-                resultText.append(R.string.arena).append(teamArena).append("\n");
-                resultText.append(R.string.conference).append(teamConference).append("\n");
+                resultText.append("Id equipo: ").append(teamId).append("\n");
+                resultText.append("Nombre equipo: ").append(teamName).append("\n");
+                resultText.append("Ciudad: ").append(teamCity).append("\n");
+                resultText.append("Estadio: ").append(teamArena).append("\n");
+                resultText.append("Conferencia: ").append(teamConference).append("\n");
             } while (cursor.moveToNext());
         } else {
             resultText.append("Resultados no encontrados");

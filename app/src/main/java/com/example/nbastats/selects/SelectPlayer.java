@@ -1,5 +1,6 @@
 package com.example.nbastats.selects;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -70,6 +71,7 @@ public class SelectPlayer extends AppCompatActivity {
         return camposList;
     }
 
+    @SuppressLint("Range")
     private void hacerSelect() {
         String campoSeleccionado = campoSpinner.getSelectedItem().toString();
         String clave = claveEditText.getText().toString();
@@ -89,12 +91,12 @@ public class SelectPlayer extends AppCompatActivity {
                 String country = cursor.getString(cursor.getColumnIndex("player_country"));
                 String team = cursor.getString(cursor.getColumnIndex("team_id"));
 
-                resultText.append(R.string.playerId).append(playerId).append("\n");
-                resultText.append(R.string.playerName).append(playerName).append("\n");
-                resultText.append(R.string.playerSurname).append(playerApel).append("\n");
-                resultText.append(R.string.playerPosition).append(position).append("\n");
-                resultText.append(R.string.playerCountry).append(country).append("\n");
-                resultText.append(R.string.playerTeam).append(team).append("\n\n");
+                resultText.append("Id jugador: ").append(playerId).append("\n");
+                resultText.append("Nombre jugador: ").append(playerName).append("\n");
+                resultText.append("Apellido jugador: ").append(playerApel).append("\n");
+                resultText.append("Posición: ").append(position).append("\n");
+                resultText.append("País: ").append(country).append("\n");
+                resultText.append("Equipo: ").append(team).append("\n\n");
             } while (cursor.moveToNext());
         } else {
             resultText.append("Resultados no encontrados");
